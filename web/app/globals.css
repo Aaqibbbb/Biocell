@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * CellGraphFM design system — minimal, enterprise, glassmorphic.
+ * Dark-first. Systematic tokens; every surface derives from these.
+ * ------------------------------------------------------------------ */
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Planes & ink */
+  --color-bg: #07080b;
+  --color-surface: #0c0e13;
+  --color-ink: #f5f6f8;
+  --color-ink-secondary: #b7bdca;
+  --color-ink-muted: #7c8494;
+
+  /* Hairlines */
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.14);
+
+  /* Accents (from the validated categorical ramp) */
+  --color-accent: #3987e5;
+  --color-accent-2: #199e70;
+  --color-accent-3: #9085e9;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv01", "ss01";
+  letter-spacing: -0.011em;
+  /* Layered ambient glow — the only "color" on an otherwise near-black plane. */
+  background-image:
+    radial-gradient(60rem 60rem at 78% -8%, rgba(57, 135, 229, 0.14), transparent 60%),
+    radial-gradient(48rem 48rem at 8% 8%, rgba(25, 158, 112, 0.10), transparent 55%),
+    radial-gradient(52rem 52rem at 92% 96%, rgba(144, 133, 233, 0.10), transparent 55%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(57, 135, 229, 0.28);
+}
+
+/* Thin, quiet scrollbar. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+@layer components {
+  /* Systematic layout primitives */
+  .container-x {
+    width: 100%;
+    max-width: 74rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  .section {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  /* Glassmorphic surface — the core artifact material */
+  .glass {
+    background: rgba(255, 255, 255, 0.028);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid var(--color-line);
+    border-radius: 1.1rem;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
+      0 24px 60px -28px rgba(0, 0, 0, 0.7);
+  }
+  .glass-hover {
+    transition:
+      transform 0.4s var(--ease-out-soft),
+      border-color 0.4s var(--ease-out-soft),
+      background 0.4s var(--ease-out-soft);
+  }
+  .glass-hover:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-line-strong);
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  /* Nav bar — stronger frost */
+  .glass-nav {
+    background: rgba(7, 8, 11, 0.6);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.75rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--color-ink-secondary);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  .text-gradient {
+    background: linear-gradient(100deg, #ffffff 0%, #cdd6e6 42%, #7fa9ec 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .stat-num {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+
+  .grid-overlay {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 75%);
+  }
+}
+
+/* Respect reduced-motion for the 3D auto-rotate and transitions. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
