@@ -7,6 +7,7 @@
 *Represent tissue as interacting biological entities — not just pixels.*
 
 [![CI](https://github.com/Aaqibbbb/Biocell/actions/workflows/ci.yml/badge.svg)](https://github.com/Aaqibbbb/Biocell/actions/workflows/ci.yml)
+[![Web](https://github.com/Aaqibbbb/Biocell/actions/workflows/web.yml/badge.svg)](https://github.com/Aaqibbbb/Biocell/actions/workflows/web.yml)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Code style: ruff](https://img.shields.io/badge/lint-ruff-261230.svg)](https://github.com/astral-sh/ruff)
