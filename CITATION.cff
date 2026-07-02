@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use CellGraphFM, please cite it as below."
+title: "CellGraphFM: A Foundation Model toolkit for Cellular Graph Intelligence in Computational Pathology"
+type: software
+authors:
+  - name: "CellGraphFM contributors"
+repository-code: "https://github.com/Aaqibbbb/Biocell"
+license: MIT
+version: 0.1.0
+date-released: 2026-07-02
+keywords:
+  - computational pathology
+  - graph neural networks
+  - foundation models
+  - cell graphs
+  - self-supervised learning

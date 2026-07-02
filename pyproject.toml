@@ -1,0 +1,97 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cellgraphfm"
+version = "0.1.0"
+description = "A foundation-model toolkit for cellular graph intelligence in computational pathology."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "CellGraphFM contributors" }]
+keywords = [
+    "computational-pathology",
+    "graph-neural-networks",
+    "foundation-models",
+    "digital-pathology",
+    "cell-graphs",
+    "self-supervised-learning",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.9",
+]
+
+[project.optional-dependencies]
+torch = [
+    "torch>=2.1",
+    "torch-geometric>=2.5",
+]
+viz = [
+    "networkx>=3.0",
+    "plotly>=5.0",
+    "matplotlib>=3.6",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/Aaqibbbb/Biocell"
+Repository = "https://github.com/Aaqibbbb/Biocell"
+Issues = "https://github.com/Aaqibbbb/Biocell/issues"
+
+[project.scripts]
+cellgraphfm = "cellgraphfm.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cellgraphfm"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+    "B008",  # function call in default argument (used intentionally for rng)
+    "SIM108",  # ternary can hurt readability in numeric code
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = "-ra -q"
+filterwarnings = [
+    "error::DeprecationWarning:cellgraphfm.*",
+]
+
+[tool.coverage.run]
+source = ["cellgraphfm"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "\\.\\.\\.",
+]

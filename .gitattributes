@@ -1,0 +1,9 @@
+# Normalize line endings: store as LF in the repository.
+* text=auto eol=lf
+
+# Explicitly treat common binaries as binary.
+*.png binary
+*.jpg binary
+*.pt binary
+*.pth binary
+*.ckpt binary
