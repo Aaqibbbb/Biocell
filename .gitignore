@@ -39,10 +39,12 @@ htmlcov/
 # Notebooks
 .ipynb_checkpoints/
 
-# Data / model artifacts (kept out of VCS)
-data/
-datasets/
-checkpoints/
+# Data / model artifacts (kept out of VCS).
+# NOTE: anchored to the repo root so they do NOT match the package's own
+# cellgraphfm/data/ source directory.
+/data/
+/datasets/
+/checkpoints/
 *.pt
 *.pth
 *.ckpt

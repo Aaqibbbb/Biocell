@@ -75,6 +75,11 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["E501"]
 
+[tool.ruff.lint.isort]
+# Pin first-party detection so import grouping is identical everywhere,
+# regardless of whether the package is installed in the environment.
+known-first-party = ["cellgraphfm"]
+
 [tool.pytest.ini_options]
 minversion = "7.0"
 testpaths = ["tests"]
